@@ -38,7 +38,7 @@ int pointer_alloc_linked(Pointer *pointer, long int size)
     return SUCCESS_MESSAGE;
 }
 
-int pointer_free_cpu(Pointer *pointer, long int size)
+int pointer_free_cpu(Pointer *pointer)
 {
     if (!(pointer->type & CPU_POINTER))
     {
@@ -50,7 +50,7 @@ int pointer_free_cpu(Pointer *pointer, long int size)
     return SUCCESS_MESSAGE;
 }
 
-int pointer_free_gpu(Pointer *pointer, long int size)
+int pointer_free_gpu(Pointer *pointer)
 {
     if (!(pointer->type & GPU_POINTER))
     {
@@ -62,7 +62,7 @@ int pointer_free_gpu(Pointer *pointer, long int size)
     return SUCCESS_MESSAGE;
 }
 
-int pointer_free_linked(Pointer *pointer, long int size)
+int pointer_free_linked(Pointer *pointer)
 {
     if (pointer->type != LINKED_POINTER)
     {

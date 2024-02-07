@@ -30,8 +30,8 @@ int pointer_alloc_cpu(Pointer *pointer, long int size);
 int pointer_alloc_gpu(Pointer *pointer, long int size);
 int pointer_alloc_linked(Pointer *pointer, long int size);
 
-int pointer_free_cpu(Pointer *pointer, long int size);
-int pointer_free_gpu(Pointer *pointer, long int size);
-int pointer_free_linked(Pointer *pointer, long int size);
+int pointer_free_cpu(Pointer *pointer);
+int pointer_free_gpu(Pointer *pointer);
+int pointer_free_linked(Pointer *pointer);
 
 #endif
