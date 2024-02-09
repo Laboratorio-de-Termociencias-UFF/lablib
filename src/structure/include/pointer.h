@@ -1,12 +1,11 @@
 #ifndef POINTER_HEADER_C
 #define POINTER_HEADER_C
 
-#include "stdio.h"
 #include "stdlib.h"
 #include "cuda_runtime.h"
 
-#define SUCCESS_MESSAGE 0
-#define ERROR_MESSAGE(str) (printf("ERROR - %s", (str)), 1)
+#include "../../error/include/error.h"
+
 #define DEFAULT_POINTER_TYPE LINKED_POINTER
 
 enum PointerType

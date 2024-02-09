@@ -12,7 +12,7 @@ int pointer_alloc_cpu(Pointer *pointer, long int size)
     {
         return ERROR_MESSAGE("CPU Allocation - malloc");
     }
-    return SUCCESS_MESSAGE;
+    return SUCCESS_MESSAGE("CPU Allocation");
 }
 
 int pointer_alloc_gpu(Pointer *pointer, long int size)
@@ -23,7 +23,7 @@ int pointer_alloc_gpu(Pointer *pointer, long int size)
     }
     pointer->type = (enum PointerType)(pointer->type | GPU_POINTER);
     cudaMalloc(&(pointer->pDev), size);
-    return SUCCESS_MESSAGE;
+    return SUCCESS_MESSAGE("GPU Allocation");
 }
 
 int pointer_alloc_linked(Pointer *pointer, long int size)
@@ -35,7 +35,7 @@ int pointer_alloc_linked(Pointer *pointer, long int size)
     pointer->type = LINKED_POINTER;
     pointer->pHost = malloc(size);
     cudaMalloc(&(pointer->pDev), size);
-    return SUCCESS_MESSAGE;
+    return SUCCESS_MESSAGE("Linked Allocation");
 }
 
 int pointer_free_cpu(Pointer *pointer)
@@ -47,7 +47,7 @@ int pointer_free_cpu(Pointer *pointer)
     pointer->type = (enum PointerType)(pointer->type & !CPU_POINTER);
     free(pointer->pHost);
     pointer->pHost = NULL;
-    return SUCCESS_MESSAGE;
+    return SUCCESS_MESSAGE("CPU Free");
 }
 
 int pointer_free_gpu(Pointer *pointer)
@@ -59,7 +59,7 @@ int pointer_free_gpu(Pointer *pointer)
     pointer->type = (enum PointerType)(pointer->type & !GPU_POINTER);
     cudaFree(pointer->pDev);
     pointer->pDev = NULL;
-    return SUCCESS_MESSAGE;
+    return SUCCESS_MESSAGE("GPU Free");
 }
 
 int pointer_free_linked(Pointer *pointer)
@@ -73,5 +73,5 @@ int pointer_free_linked(Pointer *pointer)
     cudaFree(pointer->pDev);
     pointer->pHost = NULL;
     pointer->pDev = NULL;
-    return SUCCESS_MESSAGE;
+    return SUCCESS_MESSAGE("Linked Free");
 }

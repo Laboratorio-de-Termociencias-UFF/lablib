@@ -13,10 +13,11 @@ find_package(CUDAToolkit)
 
 # Add Libraries
 add_subdirectory(src/structure)
+add_subdirectory(src/error)
 
 # Add executables
 add_executable(${PROJECT_NAME} main.c)
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY C_STANDARD 99)
 
-target_link_libraries(${PROJECT_NAME} PUBLIC Structure)
+target_link_libraries(${PROJECT_NAME} PUBLIC Structure Error)
