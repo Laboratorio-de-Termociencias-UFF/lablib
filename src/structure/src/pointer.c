@@ -34,6 +34,10 @@ int pointer_alloc_linked(Pointer *pointer, long int size)
     }
     pointer->type = LINKED_POINTER;
     pointer->pHost = malloc(size);
+    if (pointer->pHost == NULL)
+    {
+        return ERROR_MESSAGE("Linked Allocation - malloc");
+    }
     cudaMalloc(&(pointer->pDev), size);
     return SUCCESS_MESSAGE("Linked Allocation");
 }

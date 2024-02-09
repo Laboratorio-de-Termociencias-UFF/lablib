@@ -1,5 +1,5 @@
-#ifndef ERROR_HEADER
-#define ERROR_HEADER
+#ifndef ERROR_HEADER_C
+#define ERROR_HEADER_C
 
 #include "stdio.h"
 
